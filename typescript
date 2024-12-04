@@ -1,0 +1,7 @@
+Script started on 2024-12-04 10:17:55+00:00 [TERM="xterm" TTY="/dev/pts/0" COLUMNS="122" LINES="31"]
+[?2004h]0;janne@fso: ~/part12-containers-applicationsjanne@fso:~/part12-containers-applications$ echo "hello"
+[?2004lhello
+[?2004h]0;janne@fso: ~/part12-containers-applicationsjanne@fso:~/part12-containers-applications$ exit
+[?2004lexit
+
+Script done on 2024-12-04 10:18:09+00:00 [COMMAND_EXIT_CODE="0"]
