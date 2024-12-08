@@ -12,7 +12,7 @@ COPY --chown=node:node . .
 RUN npm ci
 
 # express debug mode, tulostaa terminaaliin tietoja
-# ENV DEBUG=playground:*
+ENV DEBUG=playground:*
 
 # Vaihdetaan kontin käyttäjäksi node eikä root
 USER node
