@@ -16,3 +16,8 @@ services:
         # db siis tallennetaan kontin ulkopuolelle mutta on silti kontin käytössä
         # db tiedot siis säilyvät vaikka poistetaan kontti
       - ./mongo_data:/data/db
+  redis:
+# Tämä kaikki on omaa arvailua
+    image: redis
+    ports:
+    - 6379:6379
