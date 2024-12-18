@@ -8,6 +8,11 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: example
       MONGO_INITDB_DATABASE: the_database
     volumes:
+        # Tämä ajetaan vain kerran, silloin kuin mongoDB kontti käynnistyy ja data kansio on tyhjä.
+        # Scripti luo käyttäjän, tietokannan, collectioning ja lisää pari notea
       - ./mongo/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
 
+        # Bind mount. Luo mongo_data kansion host koneelle ja mappaa sen konttiin /data/db kansioon. 
+        # db siis tallennetaan kontin ulkopuolelle mutta on silti kontin käytössä
+        # db tiedot siis säilyvät vaikka poistetaan kontti
       - ./mongo_data:/data/db
