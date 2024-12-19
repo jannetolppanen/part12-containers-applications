@@ -1,8 +1,7 @@
 const express = require('express');
 const { Todo } = require('../mongo');
 const router = express.Router();
-// rediksen laskurifunktiot
-const { getAsync, setAsync } = require('../redis')
+const { getAsync, setAsync } = require('../redis');
 
 /* GET todos listing. */
 router.get('/', async (_, res) => {
@@ -16,18 +15,11 @@ router.post('/', async (req, res) => {
     text: req.body.text,
     done: false,
   });
+// redislaskurin lisäys
+  const currentCount = (await getAsync('added_todos')) || 0;
+  await setAsync('added_todos', parseInt(currentCount) + 1); 
   res.send(todo);
-
-//redislaskurin lisäys
-const currentCount = (await getAsync('added_todos')) || 0
-await setAsync('added_todos', parseInt(currentCount) + 1)
 });
-
-/* GET statistics */
-router.get('/statistics', async (req, res) => {
-  const addedTodos = (await getAsync('added_todos')) || 0
-  return res.json({ added_todos: parseInt(addedTodos) })
-})
 
 const singleRouter = express.Router();
 
